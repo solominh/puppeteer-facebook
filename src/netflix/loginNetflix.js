@@ -1,5 +1,5 @@
 const path = require('path');
-const { createCacheManager } = require('./CacheManager');
+const { createCacheManager } = require('../CacheManager');
 
 // => redirect to https://www.netflix.com/vn-en/login
 const LOGIN_PAGE_URL = 'https://netflix.com/login';
@@ -28,16 +28,16 @@ const saveCookiesToCache = async (email, cookies) => {
   }
 };
 
-async function loginNetflix(page) {
-  const loggedCheck = async page => {
-    try {
-      await page.waitForSelector('.account-menu-item', { timeout: 10000 });
-      return true;
-    } catch (err) {
-      return false;
-    }
-  };
+const loggedCheck = async page => {
+  try {
+    await page.waitForSelector('.account-menu-item', { timeout: 10000 });
+    return true;
+  } catch (err) {
+    return false;
+  }
+};
 
+async function loginNetflix(page) {
   const email = process.env.NETFLIX_EMAIL;
   const password = process.env.NETFLIX_PASSWORD;
 
