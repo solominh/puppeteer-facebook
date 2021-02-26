@@ -6,7 +6,7 @@ var crypto = require('crypto')
 const loginFacebook = async page => {
   const loggedCheck = async page => {
     try {
-      await page.waitForSelector('#bluebarRoot', { timeout: 10000 })
+      await page.waitForSelector('#ssrb_root_start', { timeout: 10000 })
       return true
     } catch (err) {
       return false
@@ -42,7 +42,9 @@ const loginFacebook = async page => {
     facebookCache[key] = cookies
     try {
       await fs.outputFile(filePath, JSON.stringify(facebookCache))
-    } catch (error) {}
+    } catch (error) {
+
+    }
   }
 
   const { EMAIL, PASS } = process.env
@@ -61,7 +63,7 @@ const loginFacebook = async page => {
     await page.goto('https://facebook.com')
     await page.type('#email', EMAIL)
     await page.type('#pass', PASS)
-    await page.click('#loginbutton input')
+    await page.click('[data-testid="royal_login_button"]')
     await page.waitForNavigation()
     isLogged = await loggedCheck(page)
   }

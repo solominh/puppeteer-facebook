@@ -18,7 +18,13 @@ const main = async () => {
     height: 900,
   })
 
-  await loginFacebook(page)
+  try {
+    
+    await loginFacebook(page)
+  } catch (error) {
+    console.log(error)
+  }
+
 
   console.log('Done.')
 }

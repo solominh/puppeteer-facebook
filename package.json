@@ -11,7 +11,7 @@
     "fs-extra": "^7.0.1",
     "jest": "^22.0.0",
     "prettier": "^1.9.2",
-    "puppeteer": "^0.13.0",
+    "puppeteer": "^7.1.0",
     "rimraf": "^2.6.2"
   }
 }
