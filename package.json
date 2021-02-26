@@ -3,8 +3,7 @@
   "scripts": {
     "test": "jest",
     "loginFacebook": "node src/index.js",
-    "loginNetflix": "node src/loginNetflix.js"
-
+    "netflix": "node src/netflix.js"
   },
   "devDependencies": {
     "chalk": "^4.1.0",
@@ -17,6 +16,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
+    "cryptr": "^6.0.2",
     "lodash": "^4.17.21"
   }
 }
