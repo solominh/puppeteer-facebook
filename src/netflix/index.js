@@ -1,5 +1,6 @@
 require('dotenv').config();
 const puppeteer = require('puppeteer');
+const path = require("path");
 
 const {loginNetflix} = require('./loginNetflix')
 
@@ -27,6 +28,13 @@ const main = async (url) => {
     await loginNetflix(page, url);
 
     await page.goto(url);
+    await page.click('["data-uia="play-button"]');
+    await page.waitForNavigation();
+
+    
+    await page.addScriptTag({
+      path: path.join(__dirname, "injectScript")
+    })
   } catch (error) {
     console.log(error);
   }
@@ -34,6 +42,5 @@ const main = async (url) => {
   console.log('Done.');
 };
 
-const url ='https://www.netflix.com/watch/70298554'
-
+const url ='https://www.netflix.com/title/81091393?s=i&trkid=254015180'
 main(url);
